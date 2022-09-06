@@ -68,7 +68,12 @@ const Home: NextPage = () => {
                 </a>
 
               </Link>
-              <a href="https://getbootstrap.com/docs/4.1/examples/album/#" className="btn btn-secondary my-2">Secondary action</a>
+              <Link href="/chart">
+                <a className="btn btn-secondary my-2">
+                  Chart
+                </a>
+
+              </Link>              
             </p>
           </div>
         </section>

@@ -42,7 +42,7 @@ const BasicTable = props => {
       <table className="thead-dark" {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr key = {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
                 <th scope="col" {...column.getHeaderProps()}>{column.render('Header')}</th>
               ))}
