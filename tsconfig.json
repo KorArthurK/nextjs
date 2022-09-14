@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/chart3.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/chart3.jsx", "pages/linechart.jsx"],
   "exclude": ["node_modules"]
 }
