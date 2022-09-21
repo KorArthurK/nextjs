@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
-const LineChart = ({ Data, data_type }) => {
+// const LineChart = ({ Data, data_type }) => {
+const LineChart = ({ Data }) => {
   // Element References
   const svgRef = useRef(null);
   const tooltipRef = useRef(null);
@@ -17,25 +18,15 @@ const LineChart = ({ Data, data_type }) => {
     const parseDate = d3.timeParse("%Y%m%d");
     let xAccessor;
     let yAccessor;
-    // variable accessor depending on datatype
-    switch (data_type) {
-      case "campaign_conversions":
-        xAccessor = (d) => parseDate(d.date);
-        yAccessor = (d) => d.Conversions;
-        break;
-      case "campaign_impressions":
-        xAccessor = (d) => parseDate(d.date);
-        yAccessor = (d) => d.Impressions;
-        break;
-      default:
-      // n/a
-    }
+
+    xAccessor = (d) => parseDate(d.date);
+    yAccessor = (d) => d.impressions;    
 
     // Dimensions
     let dimensions = {
       width: 1000,
-      height: 500,
-      margins: 50,
+      height: 700,
+      margins: 100,
     };
 
     dimensions.containerWidth = dimensions.width - dimensions.margins * 2;
@@ -147,12 +138,13 @@ const LineChart = ({ Data, data_type }) => {
         tooltipDot.style("opacity", 0);
         tooltip.style("display", "none");
       });
-  }, [Data, data_type]); // redraw chart if data changes
+  // }, [Data, data_type]); // redraw chart if data changes
+}, [Data]); // redraw chart if data changes
 
   return (
     <div className="line-chart">
       <svg ref={svgRef} />
-      <div ref={tooltipRef} class="lc-tooltip">
+      <div ref={tooltipRef} className="lc-tooltip">
         <div className="data"></div>
         <div className="date"></div>
       </div>
@@ -171,9 +163,22 @@ let data = [
   { date: 20220102, impressions: 120 },
   { date: 20220103, impressions: 130 },
   { date: 20220104, impressions: 140 },
-  { date: 20220105, impressions: 150 },
+  { date: 20220105, impressions: 90 },
   { date: 20220106, impressions: 160 },
   { date: 20220107, impressions: 170 },
+  { date: 20220108, impressions: 180 },
+  { date: 20220109, impressions: 190 },
+  { date: 20220110, impressions: 200 },
+  { date: 20220111, impressions: 210 },
+  { date: 20220112, impressions: 800 },
+  { date: 20220113, impressions: 230 },
+  { date: 20220114, impressions: 300 },
+  { date: 20220115, impressions: 250 },
+  { date: 20220116, impressions: 260 },
+  { date: 20220117, impressions: 270 },
+  { date: 20220118, impressions: 280 }
+
+
 
   // ... truncated but you get it
 ];
@@ -184,7 +189,8 @@ let data = [
 const Test = () =>{    
   return (
     <>
-      <LineChart Data={data} data_type="campaign_impressions" />
+      {/* <LineChart Data={data} data_type="campaign_conversions" /> */}
+      <LineChart Data={data} />
     </>
   );
 };
