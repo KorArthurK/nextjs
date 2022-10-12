@@ -4,7 +4,10 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = {
+const withImages = require('next-images')
+
+
+module.exports = withImages({
   webpack: (
     config,
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
@@ -12,7 +15,11 @@ module.exports = {
     // Important: return the modified config
     return config
   },
-}
+  images: {
+    disableStaticImages: true
+  },
+  
+})
 
 // const { PHASE_PRODUCTION_BUILD, PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 // const nextEnv = require("next-env");
